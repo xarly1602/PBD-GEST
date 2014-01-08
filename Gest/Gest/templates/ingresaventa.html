@@ -1,0 +1,171 @@
+{% extends 'template.html' %}
+		{% block TITLE %}Mi primera pagina con estilo{% endblock %}
+
+{% block HEADER %}
+
+
+	<div id="contenido">
+		<div id='csshor'>
+		<ul>
+			<li><a href="ingresaventa"><span>Crear</span></a></li>
+		</ul>
+		</div>
+	</div>	
+	{% endblock %}
+		{% block MENU %}
+		<ul>
+			<li class='has-sub '><a href='{% url ingresaventa %}'><span>Ventas</span></a>
+				<ul>
+					<li><a href='{% url ingresaventa %}'><span>Nueva Venta</span></a></li>
+					<li><a href='{% url venta_list %}'><span>Ventas Realizadas</span></a></li>	
+				</ul>
+			</li>
+			<li class='has-sub '><a href='{% url regicliente %}'><span>Clientes</span></a>
+				<ul>
+					<li><a href='{% url regicliente %}'><span>Ingresar nuevo</span></a></li>
+					<li><a href='{% url buscarcliente %}'><span>Modificar</span></a></li>
+					<li><a href='{% url construccion %}'><span>Eliminar</span></a></li>			
+				</ul>
+			</li>
+			<li class='has-sub '><a href='{% url regivehiculo %}'><span>Vehículos</span></a>
+				<ul>
+					<li><a href='{% url regivehiculo %}'><span>Ingresar nuevo</span></a></li>
+					<li><a href='{% url buscarvehiculo %}'><span>Modificar</span></a></li>
+					<li><a href='{% url construccion %}'><span>Eliminar</span></a></li>
+				</ul>
+			</li>
+			<li class='has-sub '><a href='{% url ingresaorden %}'><span>Orden de Trabajo</span></a>
+				<ul>
+					<li><a href='{% url ingresaorden %}'><span>Ingresar nueva</span></a></li>
+					<li><a href='{% url buscaot %}'><span>Modificar</span></a></li>
+					<li><a href='{% url anulaot %}'><span>Eliminar</span></a></li>
+				</ul>
+			</li>
+		</ul>
+		{% endblock %}
+		{% block CONTENT %}
+			
+			<h2 style = "margin-top: 20px"> Ingresar venta</h2>	
+			{% if not OT and not Productos %}
+				<form method="post" action="{% url ingresaventa %}">
+	        		{% csrf_token %}
+	        		<br><br><br><br>	
+					<button name="OT" type="submit" class="btn btn-default">Orden de Trabajo</button><br><br>
+					<button name="Productos" type="submit" class="btn btn-default">Venta Productos</button>
+				</form>	
+			{% endif %}
+
+			{% if OT and not otEncontrada %}
+
+			{% if not primera %}
+			<script type="text/javascript">
+				alert("La OT indicada no existe.")
+			</script>
+			{% endif %}
+
+			<form method="post" action="{% url ingresaventa %}">
+        		{% csrf_token %}
+				<div id="material">
+						<p></p>
+					<input name="numeroBuscado" style = "top: 50px" type="text" size="15" maxlength="30" id="caja-material" placeholder= "Numero orden">
+					</input>
+				</div><br><br><br><br><br>
+				<button name="buscarOT" type="submit" class="btn btn-default">Buscar</button>
+			</form>
+			{% endif %}
+
+			{%if OT and otEncontrada%}
+			<form method="post" action="{% url ingresaventa %}">
+		        {% csrf_token %}
+				<input type="hidden" value = "{{ otBuscada.numerOrden }}">
+				<br><br><br><br>
+				<table>
+					<tr>
+					<td><p>Numero de Orden:</p></td>
+					<td><input name="numeroOrden" type="text" value="{{ otBuscada.numeroOrden }}"></input> </td>
+					<td width="40px"></td>
+					<td><p>Fecha de Inicio:</p></td>
+					<td> <input type="text" value="{{otBuscada.fechaInicio}}"></input> </td>
+					{% for D in detalleOT %}
+					<tr>
+					<td><p>Servicio:</p></td>
+					<td><input disabled type="text" value="{{ D.sevicioID }}"></input> </td>
+					<td width="20px"></td>
+					<td><p>Subtotal:</p></td>
+					<td> <input disabled type="text" value="{{D.sevicioID.precioServicio}}"></input> </td>	
+					{% endfor %}
+					<tr>
+					<td>Estado OT:</td>
+					<td> {{otBuscada.estadoID}} </td>
+					<td width="40px"></td>
+					<td><p>total:</p></td>
+					<td> <input name="total" disabled type="text" value="{{total}}"></input> </td>
+					
+				</table>
+				<br>
+				<button name='finalizarOT' type="submit" class="btn btn-default">Finalizar</button>
+			</form>
+			{% endif %}
+			
+			{% if Productos %}
+			<div id="tabla">
+			<form method="post" action="{% url ingresaventa %}">
+        		{% csrf_token %}
+				<table class="table table-striped" size="15">					
+					<tr>
+						<th scope="col" width=100>Codigo material</th>
+						<th scope="col" width=150>Nombre </th>
+						<th scope="col" width=150>Oferta</th>
+						<th scope="col" width=100>Valor</th>
+						<th scope="col" width=100>Cantidad</th>
+					</tr>
+					{% for M in listaProd %}
+					<tr class= "aa" bgcolor="silver">
+						<td width=100>{{ M.codigoMaterial }}</td>
+						<td width=150>{{ M.nombreMaterial }}</td>
+						{% if M.ofertaMaterial %}
+						<td width=100>Si</td>
+						{% else %}
+						<td width=100>No</td>
+						{% endif %}
+						<td width=100>{{ M.precioMaterial }}</td>
+						<td width=100>										
+					        <label for="age">
+					            <input name="{{M.id}}" type="number" min="0" max="{{ M.stockMaterial }}" step="1">
+					        </label>							
+						</td>
+					</tr>
+					{% endfor %}
+									
+				</table>
+			</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			<br><br>
+			<button name="agregar" type="submit" class="btn btn-default">Agregar</button>
+			<div id="tabla">
+			<table class="table table-striped" size="15">					
+					<tr>
+						<th scope="col" width=100>Codigo material</th>
+						<th scope="col" width=150>Nombre </th>
+						<th scope="col" width=150>Oferta</th>
+						<th scope="col" width=100>Valor</th>
+						<th scope="col" width=100>Cantidad</th>
+					</tr>
+					{% for M in carrito %}
+					<tr  class= "aa" bgcolor="silver">
+						<td width=100>{{ M.codigoMaterial }}<input type="hidden" value = "{{M.id}}" name = "C{{M.id}}" /></td>
+						<td width=150>{{ M.nombreMaterial }}</td>
+						{% if M.ofertaMaterial %}
+						<td width=100>Si</td>
+						{% else %}
+						<td width=100>No</td>
+						{% endif %}
+						<td width=100>{{ M.precioMaterial }}</td>
+						<td> {{ M.precioNeto }}<input type="hidden" value = "{{M.precioNeto}}" name = "Cant{{M.id}}" /></td>
+					</tr>
+					{% endfor %}					
+				</table>
+				<button name="terminarCompra" type="submit" class="btn btn-default">Finalizar</button> <input type="text" disabled value = "Total: {{total}}"/>
+			</form>
+			</div>
+			{% endif %}
+			{% endblock %}

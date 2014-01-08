@@ -1,0 +1,73 @@
+{% extends 'template.html' %}
+		{% block TITLE %}Mi primera pagina con estilo{% endblock %}
+
+
+{% block HEADER %}
+	
+
+	<div id="contenido">
+		<div id='csshorr'>
+		<ul>
+			<li class='active '><span> <br>Bienvenido</span></li>
+		</ul>
+		</div>
+	</div>	
+{% endblock %}
+{% block MENU %}
+	<ul>
+		<li class='has-sub '><a href='vermaterial'><span>Materiales</span></a>
+			<ul>
+				<li><a href='ingresamaterial'><span>Ingresar Material</span></a></li>
+				<li><a href='vermaterial'><span>Buscar Material</span></a></li>	
+			</ul>
+		</li>
+		<li class='has-sub '><a href='regiproveedor'><span>Proveedor</span></a>
+			<ul>
+				<li><a href='regiproveedor'><span>Nuevo Proveedor</span></a></li>
+				<li><a href='buscarprov'><span>Registro Proveedores</span></a></li>	
+			</ul>
+		</li>
+		<li class='has-sub '><a href='construccion'><span>Pedidos</span></a>
+			<ul>
+				<li><a href='construccion'><span>Ingresar Pedido</span></a></li>
+				<li><a href='construccion'><span>Historial de Pedidos</span></a></li>	
+			</ul>
+		</li>
+	</ul>
+{% endblock %}
+		{% block CONTENT %}
+<h2 style = "margin-top: 20px"> Listado de Proveedores</h2>	
+			<form method="post" action="{% url buscarprov %}">
+				{% csrf_token %}
+				<div id="material">						
+					<input style = "top: 50px" type="text" size="12" maxlength="35" id="caja-material" placeholder= "Rut Proveedor" name="rut">
+					</input>
+
+				<button type="submit" id="botonBuscar">Buscar</button>
+				</div>	
+				
+			<form>	
+			<br><br><br>			
+			<div id="tabla">
+				<table class="table"size="15">
+					
+					<tr>
+						<th scope="col" width=100>Rut</th>
+						<th scope="col" width=150>Nombre</th>
+						<th scope="col" width=150>Correo</th>
+						<th scope="col" width=150>Telefono</th>
+					</tr>	
+					{% for prov in proveedores %}
+					<tr>
+						<th scope="col" width=100>{{prov.rutProveedor}}</th>
+						<th scope="col" width=150>{{prov.nombreProveedor}}</th>
+						<th scope="col" width=150>{{prov.correoProveedor}}</th>
+						<th scope="col" width=150>{{prov.telefonoProveedor}}</th>
+						
+					</tr>					
+    				{% endfor %}				
+					
+				</table>
+			
+			</div>
+			{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'template.html' %}
+
+{% block HEADER %}
+    
+
+    <div id="contenido">
+        <div id='csshorr'>
+        <ul>
+            <li class='active '><span> <br>Bienvenido</span></li>
+        </ul>
+        </div>
+    </div>  
+{% endblock %}
+{% block MENU %}
+    <ul>
+        <li class='has-sub '><a href='vermaterial'><span>Materiales</span></a>
+            <ul>
+                <li><a href='ingresamaterial'><span>Ingresar Material</span></a></li>
+                <li><a href='vermaterial'><span>Buscar Material</span></a></li> 
+            </ul>
+        </li>
+        <li class='has-sub '><a href='regiproveedor'><span>Proveedor</span></a>
+            <ul>
+                <li><a href='regiproveedor'><span>Nuevo Proveedor</span></a></li>
+                <li><a href='buscarprov'><span>Registro Proveedores</span></a></li> 
+            </ul>
+        </li>
+        <li class='has-sub '><a href='construccion'><span>Pedidos</span></a>
+            <ul>
+                <li><a href='construccion'><span>Ingresar Pedido</span></a></li>
+                <li><a href='construccion'><span>Historial de Pedidos</span></a></li>   
+            </ul>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block CONTENT %}
+ 
+   <form method="post" action="{% url regiproveedor %}">
+ 
+        {% csrf_token %}
+        <h2>Nuevo Proveedor</h2>
+        <br><br><br>
+        <table>
+            <tr>
+                <td>{{ form.rutProveedor.label_tag }}</td>
+                <td>{{ form.rutProveedor }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.nombreProveedor.label_tag }}</td>
+                <td>{{ form.nombreProveedor }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.telefonoProveedor.label_tag }}</td>
+                <td>{{ form.telefonoProveedor }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.correoProveedor.label_tag }}</td>
+                <td>{{ form.correoProveedor }}</td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-default">Guardar</button>
+    </form>
+ 
+{% endblock %}
+
+{% block errores %}
+    
+    {% if form.errors%}
+        <p>{{ form.errors }}</p>
+    {% endif %}
+
+    {% if rutInvalido %}
+        <p>Rut inválido.</p>
+    {% endif %}
+    
+    {% if correoInvalido %}
+        <p>El correo indicado es invalido.</p>
+    {% endif %}
+
+    {% if telefonoInvalido %}
+        <p>El teléfono ingresado es inválido.</p>
+    {% endif %}
+
+{% endblock %}

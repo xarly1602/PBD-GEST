@@ -1,0 +1,48 @@
+{% extends 'template.html' %}
+
+{% block HEADER %}
+	<div id="contenido">
+		<div id='csshorr'>
+		<ul>
+			<li ></li>
+		</ul>
+		</div>
+	</div>	
+{% endblock %}
+
+{% block MENU %}
+	<ul>
+		<li class='has-sub '><a href='informes'><span>Informes</span></a>
+			<ul>
+				<li><a href='construccion'><span>Ventas</span></a></li>
+				<li><a href='construccion'><span>Stock</span></a></li>	
+			</ul>
+		</li>
+		<li class='has-sub '><a href='{% url verclientes %}'><span>Clientes</span></a>
+		</li>
+		<li class='has-sub '><a href='{% url vehiculo_list %}'><span>Vehículos</span></a>
+		</li>
+		<li class='has-sub '><a href='{% url ingresausuario %}'><span>Usuarios</span></a>
+			<ul>
+				<li><a href='{% url ingresausuario %}'><span>Crear</span></a></li>
+				<li><a href='{% url modificausuario %}'><span>Modificar</span></a></li>	
+				<li><a href='eliminausuario'><span>Eliminar</span></a></li>	
+			</ul>
+		</li>
+	</ul>
+{% endblock %}
+
+{% block CONTENT %}
+        <h2>Informe Descargado</h2>
+        <br><br><br>
+    <form method="post" action="{% url MenuAdmin %}">
+       	{% csrf_token %}
+        <button type="submit" class="btn btn-default">Volver</button>
+ 	</form>
+ 
+{% endblock %}
+
+{% block errores %}
+    
+
+{% endblock %}

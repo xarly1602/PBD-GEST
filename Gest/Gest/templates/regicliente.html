@@ -1,0 +1,109 @@
+{% extends 'template.html' %}
+{% block TITLE %}Mi primera pagina con estilo{% endblock %}
+
+{% block HEADER %}
+    <div id="contenido">
+        <div id='csshor'>
+        <ul>
+            <li class='active '><a href="{% url regicliente %}"><span>Crear</span></a></li>
+            <li><a href="{% url buscarcliente %}"><span>Modificar</span></a></li>
+            <li><a href="construccion"><span>Eliminar</span></a></li>
+        </ul>
+        </div>
+    </div>  
+{% endblock %}
+
+{% block MENU %}
+    <ul>
+        <li class='has-sub '><a href='{% url ingresaventa %}'><span>Ventas</span></a>
+            <ul>
+                <li><a href='{% url ingresaventa %}'><span>Nueva Venta</span></a></li>
+                <li><a href='{% url venta_list %}'><span>Ventas Realizadas</span></a></li>    
+            </ul>
+        </li>
+        <li class='has-sub '><a href='{% url regicliente %}'><span>Clientes</span></a>
+            <ul>
+                <li><a href='{% url regicliente %}'><span>Ingresar nuevo</span></a></li>
+                <li><a href='{% url buscarcliente %}'><span>Modificar</span></a></li>
+                <li><a href='{% url construccion %}'><span>Eliminar</span></a></li>          
+            </ul>
+        </li>
+        <li class='has-sub '><a href='{% url regivehiculo %}'><span>Vehículos</span></a>
+            <ul>
+                <li><a href='{% url regivehiculo %}'><span>Ingresar nuevo</span></a></li>
+                <li><a href='{% url buscarvehiculo %}'><span>Modificar</span></a></li>
+                <li><a href='{% url construccion %}'><span>Eliminar</span></a></li>
+            </ul>
+        </li>
+        <li class='has-sub '><a href='{% url ingresaorden %}'><span>Orden de Trabajo</span></a>
+            <ul>
+                <li><a href='{% url ingresaorden %}'><span>Ingresar nueva</span></a></li>
+                <li><a href='{% url buscaot %}'><span>Modificar</span></a></li>
+                <li><a href='{% url anulaot %}'><span>Eliminar</span></a></li>
+            </ul>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block CONTENT %}
+    <h2> Ingresar nuevo cliente</h2><br><br><br><br> 
+        <form method="post" action="{% url regicliente %}">
+            {% csrf_token %}
+ 
+            <table>
+                <tr>
+                <td><p>Nombre:</p></td>
+                <td>{{ form.nombreCliente }}</td>
+                <td width="40px"></td>
+                <td><p>Apellido:</p></td>
+                <td> {{ form.apellidoCliente }} </td>
+                <tr>
+                <td><p>Correo:</p></td>
+                <td> {{ form.correoCliente }} </td>
+                <td width="40px"></td>
+                <td>Rut:</td>
+                <td>{{ form.rutCliente }}</td>
+                <tr>
+                <td><p>Dirección:</p></td>
+                <td> {{ form.direccionCliente }} </td>
+                <td width="40px"></td>
+                <td>Telefono:</td>
+                <td>{{ form.telefonoCliente }}</td>
+                <tr>
+                <td>Comuna:</td>
+                <td> <select name="comuna">
+                        {% for comuna in comunas %}
+                            <option value="{{comuna.nombreComuna}}">{{comuna.nombreComuna}}</option>
+                        {% endfor %}
+                        <option value="0"> Otra Comuna </option>
+                    </select></td>
+                <td width="40px"></td>    
+                <td><p>Otra comuna:</p></td>
+                <td> <input type="text" name ="comunaa"></input> </td>
+            </table>
+            <br>
+            <button type="submit" class="btn btn-default">Guardar</button>
+        </form>
+
+{% endblock %}
+
+{% block errores %}
+    
+    {% if form.errors%}
+        <p>Hay Campos vacíos</p>
+    {% endif %}
+
+    {% if rutInvalido %}
+        <p>Rut inválido.</p>
+    {% endif %}
+    
+    {% if correoInvalido %}
+        <p>El correo indicado es invalido.</p>
+    {% endif %}
+
+    {% if telefonoInvalido %}
+        <p>El teléfono ingresado es inválido.</p>
+    {% endif %}
+
+{% endblock %}
+    </div>

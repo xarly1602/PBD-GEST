@@ -1,0 +1,86 @@
+{% extends 'template.html' %}
+		{% block TITLE %}Mi primera pagina con estilo{% endblock %}
+
+
+		{% block HEADER %}
+
+	<div id="contenido">
+		<div id='csshor'>
+		<ul>
+			
+			
+			
+			
+		</ul>
+		</div>
+	</div>	
+{% endblock %}
+
+		{% block MENU %}
+		<ul>
+			<li class='has-sub '><a href='{% url ingresaventa %}'><span>Ventas</span></a>
+				<ul>
+					<li><a href='{% url ingresaventa %}'><span>Nueva Venta</span></a></li>
+					<li><a href='{% url venta_list %}'><span>Ventas Realizadas</span></a></li>	
+				</ul>
+			</li>
+			<li class='has-sub '><a href='{% url regicliente %}'><span>Clientes</span></a>
+				<ul>
+					<li><a href='{% url regicliente %}'><span>Ingresar nuevo</span></a></li>
+					<li><a href='{% url buscarcliente %}'><span>Modificar</span></a></li>
+					<li><a href='{% url construccion %}'><span>Eliminar</span></a></li>			
+				</ul>
+			</li>
+			<li class='has-sub '><a href='{% url regivehiculo %}'><span>Vehículos</span></a>
+				<ul>
+					<li><a href='{% url regivehiculo %}'><span>Ingresar nuevo</span></a></li>
+					<li><a href='{% url buscarvehiculo %}'><span>Modificar</span></a></li>
+					<li><a href='{% url construccion %}'><span>Eliminar</span></a></li>
+				</ul>
+			</li>
+			<li class='has-sub '><a href='{% url ingresaorden %}'><span>Orden de Trabajo</span></a>
+				<ul>
+					<li><a href='{% url ingresaorden %}'><span>Ingresar nueva</span></a></li>
+					<li><a href='{% url buscaot %}'><span>Modificar</span></a></li>
+					<li><a href='{% url anulaot %}'><span>Eliminar</span></a></li>
+				</ul>
+			</li>
+		</ul>
+		{% endblock %}
+		{% block CONTENT %}
+<h2 style = "margin-top: 20px"> Listado de Vehiculos</h2>	
+			<form method="post" action="{% url venta_list %}">
+				{% csrf_token %}
+				<div id="material">						
+					<input style = "top: 50px" type="text" size="12" maxlength="35" id="caja-material" placeholder= "Nro Venta" name="venta">
+					</input>
+
+				<button type="submit" id="botonBuscar">Buscar</button>
+				</div>	
+				
+			<form>		
+			<br><br><br>		
+			<div id="tabla">
+				<table class="table"size="15">
+					
+					<tr>
+						<th scope="col" width=100>N° Venta</th>
+						<th scope="col" width=150>Monto a pagar</th>
+						<th scope="col" width=150>Fecha emisión</th>
+						<th scope="col" width=150>Forma de pago</th>
+						<th scope="col" width=150>Cliente</th>
+					</tr>	
+					{% for v in ventas %}
+					<tr>
+						<th scope="col" width=100>{{v.numeroVenta}}</th>
+						<th scope="col" width=150>{{v.precioVenta}}</th>
+						<th scope="col" width=150>{{v.horaVenta}}</th>
+						<th scope="col" width=150>{{v.pagoID}}</th>
+						<th scope="col" width=150>{{v.clienteRut}}</th>
+					</tr>					
+    				{% endfor %}				
+					
+				</table>
+			
+			</div>
+			{% endblock %}

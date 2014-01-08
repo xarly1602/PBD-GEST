@@ -1,0 +1,170 @@
+{% extends 'template.html' %}
+{% block TITLE %}Mi primera pagina con estilo{% endblock %}
+
+{% block HEADER %}
+	<div id="contenido">
+		<div id='csshor'>
+		<ul>
+			<li><a href="{% url ingresausuario %}"><span>Crear</span></a></li>
+			<li class='active '><a href="{% url modificausuario %}"><span>Modificar</span></a></li>
+			<li><a href="eliminausuario"><span>Eliminar</span></a></li>
+		</ul>
+		</div>
+	</div>	
+{% endblock %}
+
+{% block MENU %}
+	<ul>
+		<li class='has-sub '><a href='informes'><span>Informes</span></a>
+			<ul>
+				<li><a href='construccion'><span>Ventas</span></a></li>
+				<li><a href='construccion'><span>Stock</span></a></li>	
+			</ul>
+		</li>
+		<li class='has-sub '><a href='{% url verclientes %}'><span>Clientes</span></a>
+		</li>
+		<li class='has-sub '><a href='{% url vehiculo_list %}'><span>Vehículos</span></a>
+		</li>
+		<li class='has-sub '><a href='{% url ingresausuario %}'><span>Usuarios</span></a>
+			<ul>
+				<li><a href='{% url ingresausuario %}'><span>Crear</span></a></li>
+				<li><a href='{% url modificausuario %}'><span>Modificar</span></a></li>	
+				<li><a href='eliminausuario'><span>Eliminar</span></a></li>	
+			</ul>
+		</li>
+	</ul>
+{% endblock %}
+
+{% block CONTENT %}
+	<h2> Modificar usuario</h2><br><br><br><br> 
+		
+		{% if noexiste %}
+		<script type="text/javascript">
+			alert("El rut buscado no arrojó resultados")
+		</script>
+		{% endif %}
+
+		{% if not muestra %}
+		<div style="display:none;">
+		{% endif %}
+		<form method="post" action="{% url modificausuario %}">
+			{% csrf_token %}
+			<div id="material">						
+				<input style = "top: 50px" type="text" size="12" maxlength="35" id="caja-material" placeholder= "Rut usuario" name="rut">
+				</input>
+
+			<button type="submit" id="botonBuscar">Buscar</button>
+			</div>			
+		<form>
+		{% if not muestra %}
+		</div>
+		{% endif %}
+		{% if muestra %}
+		<div style="display:none;">
+		{% endif %}
+		<form method="post" action="{% url ingresausuario %}">
+	        {% csrf_token %}
+			<input name = "ID" type="hidden" value = "{{ user.id }}">
+			<table>
+				<tr>
+				<td><p>Nombre de Usuario:</p></td>
+				<td><input name="username" type="text" value="{{ user.username }}"></input> </td>
+				<td width="40px"></td>
+				<td><p>Contraseña:</p></td>
+				<td> <input name="pass" type="text" disabled value="********"></input> </td>
+				<tr>
+				<td><p>Correo:</p></td>
+				<td> <input name="correo" type="text" value="{{ user.email }}"></input> </td>
+				<td width="40px"></td>
+				<td>Rut usuario:</td>
+                <td><input name="rut2" type="text" value="{{ empleado.rutEmpleado }}"></input></td>
+                <tr>
+				<td><p>Nombre:</p></td>
+				<td><input name="nombre" type="text" value="{{ user.first_name }}"></input>  </td>
+				<td width="40px"></td>
+				<td>Apellido:</td>
+                <td><input name="apellido" type="text" value="{{ user.last_name }}"></input></td>
+                <tr>
+				<td><p>Telefono:</p></td>
+				<td> <input name="telefono" type="text" value="{{ empleado.telefonoEmpleado }}"></input> </td>
+				<td width="40px"></td>
+				<td>Cargo:</td>
+                <td> <select name="cargo">
+                	{% if empleado.cargoID.nombreCargo == '' %}
+                       <option value="0" selected> Cargo </option>
+                    {% else  %}
+						<option value="0"> Cargo </option>
+                    {% endif %}
+                	{% if empleado.cargoID.nombreCargo == 'Jefe de Servicio' %}
+                       <option value="1" selected> Jefe de Servicio </option>
+                    {% else  %}
+                       <option value="1"> Jefe de Servicio </option>
+                    {% endif %}
+                	{% if empleado.cargoID.nombreCargo == 'Jefe de Taller' %}
+                       <option value="2" selected> Jefe de Taller </option>
+                    {% else  %}
+                       <option value="2"> Jefe de Taller </option>
+                    {% endif %}
+                	{% if empleado.cargoID.nombreCargo == 'Jefe de Bodega' %}
+                       <option value="3" selected> Jefe de Bodega </option>
+                    {% else  %}
+                       <option value="3"> Jefe de Bodega </option>
+                    {% endif %}
+                	{% if empleado.cargoID.nombreCargo == 'Mecanico' %}
+                       <option value="4" selected> Mecanico </option>
+                    {% else  %}
+                       <option value="4"> Mecanico </option>
+                    {% endif %}
+                	{% if empleado.cargoID.nombreCargo == 'Administrador' %}
+                       <option value="5" selected> Administrador </option>
+                    {% else  %}
+                       <option value="5"> Administrador </option>
+                    {% endif %}
+                	{% if empleado.cargoID.nombreCargo == 'Auditor' %}
+                       <option value="6" selected> Auditor </option>
+                    {% else  %}
+                       <option value="6"> Auditor </option>
+                    {% endif %}
+                    </select></td>
+			</table>
+			<br>
+			<button name="guardar" type="submit" class="btn btn-default">Guardar</button>
+		</form>
+		{% if muestra %}
+		</div>
+		{% endif %}
+
+{% endblock %}
+
+{% block errores %}
+    
+	{% if form.password.errors %}
+        Debe indicar una contraseña.<br>
+    {% endif %}    
+
+	{% if correoVacio %}
+        Ingrese una direccion de correo válida.<br>
+    {% endif %}    
+
+	{% if camposVacios %}
+        Hay campos vacios.<br>
+    {% endif %}    
+
+    {% if rutInvalido %}
+        Rut inválido.<br>
+    {% endif %}
+    
+    {% if correoRegistrado %}
+        El correo indicado ya tiene una cuenta asociada.<br>
+    {% endif %}
+
+    {% if telefonoInvalido %}
+        El teléfono ingresado es inválido.<br>
+    {% endif %}
+
+    {% if cargoInvalido %}
+        Por favor elija un cargo.<br>
+    {% endif %}
+
+{% endblock %}
+	</div>

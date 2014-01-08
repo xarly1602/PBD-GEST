@@ -1,0 +1,115 @@
+{% extends 'template.html' %}
+{% block TITLE %}Mi primera pagina con estilo{% endblock %}
+
+{% block HEADER %}
+    <div id="contenido">
+        <div id='csshor'>
+        <ul>
+            <li><a href="{% url regivehiculo %}"><span>Crear</span></a></li>
+            <li class='active '><a href="{% url buscarvehiculo %}"><span>Modificar</span></a></li>
+            <li><a href="construccion"><span>Eliminar</span></a></li>
+        </ul>
+        </div>
+    </div>  
+{% endblock %}
+
+{% block MENU %}
+    <ul>
+		<li class='has-sub '><a href='{% url ingresaventa %}'><span>Ventas</span></a>
+			<ul>
+				<li><a href='{% url ingresaventa %}'><span>Nueva Venta</span></a></li>
+				<li><a href='{% url venta_list %}'><span>Ventas Realizadas</span></a></li>	
+			</ul>
+		</li>
+		<li class='has-sub '><a href='{% url regicliente %}'><span>Clientes</span></a>
+			<ul>
+				<li><a href='{% url regicliente %}'><span>Ingresar nuevo</span></a></li>
+				<li><a href='{% url buscarcliente %}'><span>Modificar</span></a></li>
+				<li><a href='{% url construccion %}'><span>Eliminar</span></a></li>			
+			</ul>
+		</li>
+		<li class='has-sub '><a href='{% url regivehiculo %}'><span>Vehículos</span></a>
+			<ul>
+				<li><a href='{% url regivehiculo %}'><span>Ingresar nuevo</span></a></li>
+				<li><a href='{% url buscarvehiculo %}'><span>Modificar</span></a></li>
+				<li><a href='{% url construccion %}'><span>Eliminar</span></a></li>
+			</ul>
+		</li>
+		<li class='has-sub '><a href='{% url ingresaorden %}'><span>Orden de Trabajo</span></a>
+			<ul>
+				<li><a href='{% url ingresaorden %}'><span>Ingresar nueva</span></a></li>
+				<li><a href='{% url buscaot %}'><span>Modificar</span></a></li>
+				<li><a href='{% url ingresaorden %}'><span>Eliminar</span></a></li>
+			</ul>
+		</li>
+	</ul>
+{% endblock %}
+
+{% block CONTENT %}
+	<h2> Buscar Vehiculo</h2><br><br><br><br> 
+		
+		{% if noexiste %}
+		<script type="text/javascript">
+			alert("La patente buscado no arrojó resultados")
+		</script>
+		{% endif %}
+
+		{% if not muestra %}
+		<div style="display:none;">
+		{% endif %}
+		<form method="post" action="{% url buscarvehiculo %}">
+			{% csrf_token %}
+			<div id="material">						
+				<input style = "top: 50px" type="text" size="12" maxlength="35" id="caja-material" placeholder= "Patente vehiculo" name="patenteVehiculo">
+				</input>
+			<button type="submit" id="botonBuscar">Buscar</button>
+			</div>	
+		</form>
+		{% if not muestra %}
+		</div>
+		{% endif %}
+		{% if muestra %}
+		<div style="display:none;">
+		{% endif %}
+		<form method="post" action="{% url buscarvehiculo %}">
+	        {% csrf_token %}
+			<input type="hidden" value = "{{ vehiculo.id }}">
+			<table>
+				<tr>
+				<td><p>Patente vehiculo:</p></td>
+				<td><input type="text" value="{{ vehiculo.patenteVehiculo }}"></input> </td>
+				<td width="40px"></td>
+				<td><p>Color vehiculo:</p></td>
+				<td><input type="text" value="{{ vehiculo.colorVehiculo }}"></input> </td>
+				<td width="40px"></td>
+				<tr>
+				<td><p>Anio vehiculo:</p></td>
+				<td> <input type="text" value="{{ vehiculo.anioVehiculo }}"></input> </td>
+				<td width="40px"></td>
+                <td>Modelo</td>
+                <td><input type="text" value="{{ modelo.nombreModelo }}"></input></td>
+                <tr>
+                <td>Marca</td>
+                <td><input type="text" value="{{ marca.nombreMarca }}"></input></td>
+                </tr>
+			</table>
+			<br>
+			<button type="submit" class="btn btn-default">Guardar</button>
+		</form>
+		{% if muestra %}
+		</div>
+		{% endif %}
+
+{% endblock %}
+
+{% block errores %}
+    
+	
+    {% if rutInvalido %}
+        Rut inválido.<br>
+    {% endif %}
+    
+    
+{% endblock %}
+	</div>
+

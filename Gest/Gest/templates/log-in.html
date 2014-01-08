@@ -1,0 +1,88 @@
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Mi primera página con estilo</title>
+  <link rel="stylesheet" href="static/log-in.css">
+  <link rel="stylesheet" href="static/css/bootstrap.css">
+  <link rel="stylesheet" href="static/css/bootstrap-responsive.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="static/js/bootstrap.js"></script>
+</head>
+<body>
+     
+  <div id="marco">
+    <div id ="imagen1">
+      <img src="static/bri.jpg"> 
+    </div>
+    <div id="cuerpo">
+      <form  method="post" action="{% url django.contrib.auth.views.login %}">
+      {% csrf_token %}
+      <div id="usuario">
+          <p>{{ form.username.label_tag }}</p>
+          {{ form.username }}       
+      </div>
+      <div id="contrasena">      
+          <p>{{ form.password.label_tag }}</p> 
+          {{form.password}}
+      <div id = "boton">
+        <button type="submit" class="btn btn-default">Ingresar</button>
+      </div>
+        </form>
+      </div>
+      <div align="center">
+      {% if form.errors %}
+        <script type="text/javascript">
+          alert("Datos incorrectos. Por favor intente nuevamente.")
+        </script>  
+      {% endif %}
+    </div>    
+  </div>
+  <div id= "cuadro">
+       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel style ">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="6"></li>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="static/bri.jpg" alt="...">
+        </div>
+        <div class="item">
+          <img src="static/fir.jpg" alt="...">
+        </div>
+        <div class="item">
+          <img src="static/goodyear.png" alt="...">
+        </div>
+        <div class="item">
+          <img src="static/pirelli.jpg" alt="...">
+        </div>
+        <div class="item">
+          <img src="static/michelin.gif" alt="...">
+        </div>
+        <div class="item">
+          <img src="static/bosch.jpg" alt="...">
+        </div>
+        <div class="item">
+          <img src="static/continental.jpg" alt="...">
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>		
+  	</div>
+  </div>
+</body>
+</html>

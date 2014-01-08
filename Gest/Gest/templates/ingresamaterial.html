@@ -1,0 +1,115 @@
+{% extends 'template.html' %}
+
+
+{% block TITLE %}Mi primera pagina con estilo{% endblock %}
+
+
+{% block HEADER %}
+	
+
+	<div id="contenido">
+		<div id='csshorr'>
+		<ul>
+			<li class='active '><span> <br>Bienvenido</span></li>
+		</ul>
+		</div>
+	</div>	
+{% endblock %}
+{% block MENU %}
+	<ul>
+		<li class='has-sub '><a href='vermaterial'><span>Materiales</span></a>
+			<ul>
+				<li><a href='ingresamaterial'><span>Ingresar Material</span></a></li>
+				<li><a href='vermaterial'><span>Buscar Material</span></a></li>	
+			</ul>
+		</li>
+		<li class='has-sub '><a href='regiproveedor'><span>Proveedor</span></a>
+			<ul>
+				<li><a href='regiproveedor'><span>Nuevo Proveedor</span></a></li>
+				<li><a href='buscarprov'><span>Registro Proveedores</span></a></li>	
+			</ul>
+		</li>
+		<li class='has-sub '><a href='construccion'><span>Pedidos</span></a>
+			<ul>
+				<li><a href='construccion'><span>Ingresar Pedido</span></a></li>
+				<li><a href='construccion'><span>Historial de Pedidos</span></a></li>	
+			</ul>
+		</li>
+	</ul>
+{% endblock %}
+
+{% block CONTENT %}
+	<h2> Ingresar material</h2><br><br><br><br> 
+        <form method="post" action="{% url ingresamaterial %}">
+            {% csrf_token %}
+ 
+            <table>
+                <tr>
+                <td><p>Tipo Material:</p></td>
+                <td>
+                	<select name="tipoMaterial">
+                        {% for tipo in tipos %}
+                        	{% if matBuscado.tipoID == tipo %}
+                            <option selected value="{{tipo.id}}">{{tipo.nombreTipo}}</option>
+                            {% else %}
+                            <option value="{{tipo.id}}">{{tipo.nombreTipo}}</option>
+                            {% endif %}
+                        {% endfor %}
+                        <option value="0"> Otro Tipo </option>
+                    </select>
+                </td>
+                <td width="40px"></td>
+                <td>Otro Tipo</td>
+                <td><input type="text" name ="tipoo"/></td>
+                <tr>
+                <td><p>Material:</p></td>
+                <td><input type="text" name="nombreMaterial" value="{{matBuscado.nombreMaterial}}"/></td>
+                <td width="40px"></td>
+                <td><p>Codigo Material:</p></td>
+                <td> <input type="text" name="codigoMaterial" value="{{matBuscado.codigoMaterial}}"/> 
+                	<button name="buscacodigo" type="submit" id="botonAct">?</button></td>
+                <tr>
+                <td>Cantidad:</td>
+                <td><input type="text" name="cantidadMaterial"/></td>
+                <td width="40px"></td>
+                <td><p>Precio:</p></td>
+                <td> <input type="text" name="precioMaterial" value = "{{matBuscado.precioMaterial}}"/> </td>
+                <tr>
+                <td>Proveedor:</td>
+                <td> <select name="proveedor">
+                        {% for proveedor in proveedores %}
+                            {% if matBuscado.proveedorID == proveedor %}
+                            <option selected value="{{proveedor.id}}">{{proveedor.nombreProveedor}}</option>
+                            {% else %}
+                            <option value="{{proveedor.id}}">{{proveedor.nombreProveedor}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select></td>
+                <td width="40px"></td>                    
+            </table>
+            <br>
+            <button type="submit" class="btn btn-default">Guardar</button>
+        </form>
+
+{% endblock %}
+
+{% block errores %}   
+
+    {% if codigoInvalido %}
+        Codigo inválido.<br>
+    {% endif %}
+    
+    {% if cantInvalida %}
+        Ingrese una cantidad válida.<br>
+    {% endif %}
+
+    {% if precioInvalido %}
+        Ingrese un precio válido.<br>
+    {% endif %}
+
+    {% if camposVacios %}
+        Hay campos vacíos.<br>
+    {% endif %}
+
+{% endblock %}
+	</div>

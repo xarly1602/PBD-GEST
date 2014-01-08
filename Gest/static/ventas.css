@@ -1,0 +1,921 @@
+body{
+	margin: 0px;
+	}
+#hd{
+	position:absolute;
+	height: 120px;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	border-bottom: 1px solid #E5E5E5;
+	}
+#hd a{
+	text-decoration: none;}
+
+#hd a:link, #hd a:visited {
+    color: white;
+}
+
+#hd a:hover {
+	color: red;
+    text-decoration: underline;
+}
+
+#hd h2{
+	margin-left: 40px;
+	color: #F6F6E8;
+	font-family: Cambria;
+	font-size: 30px;
+	font-weight: 900;
+	margin-top: 18px;
+}
+	
+#titulo{
+	float: left;
+	color: #E42323;
+	background-color: #E42323;
+	width: 90%;
+	height: 70px;
+}
+	
+#imagen{
+	float: left;
+	left: 0px;
+	width: 10%;
+}
+
+#pagina{
+position: relative;
+height: 100%;
+width: 100%;
+background-color:  #3D3C3C;
+}	
+	
+#contenido{
+	float: left;
+	top: 0px;
+	height: 65px;
+	width: 90%;
+	
+}
+
+#logout{
+	position:relative;
+	top: -30px;
+	float:right;
+	font-family: verdana;
+	margin-right: 5px;
+}
+#logout a:hover{
+	color: black;
+}
+	
+#user{
+	position:absolute;
+	height: 58px;
+	width: 55px;
+	top: 10px;
+	left: 1000px;
+	
+	}	
+	
+#user1{
+	position:absolute;
+	
+	top: 30px;
+	left: 1070px;
+	
+	}	
+
+
+#config{
+	position:absolute;
+	height: 58px;
+	width: 55px;
+	top: 10px;
+	left: 1130px;
+	
+	}	
+	
+#config1{
+	position:absolute;
+	top: 30px;
+	left: 1200px;
+	
+	}		
+
+
+a.botonrss {
+    width:45px; 
+    height:45px; /* Dimensiones de la imagen */
+    text-indent:-9999px;
+    overflow:hidden; /* Oculatando el texto del enlace */
+   
+    background:url(salir.png) no-repeat; /* Poniendo la imagen como fondo */
+}
+a.botonrss:hover {
+    background: url(salir2.png) no-repeat; /* Al hacer hover, ponemos la segunda imagen de fondo */
+}
+
+
+#imagen1 {
+	position:absolute;
+	top: 0px;
+	left: 350px;
+	
+	}
+	
+#imagen3 {
+	position:absolute;
+	top: 0px;
+	left: 70px;
+	
+	}	
+	
+#imagen4 {
+	position:absolute;
+	top: 0px;
+	left: 0px;
+	
+	
+	}
+
+#cuerpo{
+	height: 637px;
+	width: 100%;
+	position:absolute;
+	top: 133px;
+	left: 0px;
+	background-color: white;
+	background: url(center_bg.gif) repeat-x 0px 0px;
+	background: url(border.gif) repeat-x 0px 600px;
+}
+
+#imagen1 {
+	position:absolute;
+	top: 0px;
+	left: 0px;
+	
+	}
+	
+#cuerpo a{
+	
+	text-decoration: none;}
+
+	
+#cuerpo #imagen2{
+	position:absolute;
+	top: 400px;
+	left: 100px;}
+
+#ventana{
+	position: relative;
+	float: right;
+	padding-left: 50px;
+	margin-top: 20px;
+	color:black;
+	height: 511px;
+	width: 1000px;
+	background-color: white;
+}
+
+#ventana #imagen3{
+	position:absolute;
+	top: 0px;
+	left: 0px;
+	height: 100px;
+	width: 100%;}
+	
+#ventana h2{
+	position:absolute;
+	top: 0px;
+	left: 250px;}
+
+
+#vendedor{
+	
+	position:relative;
+	top: 90px;
+	left: 50px;
+	height: 50px;
+	width: 300px;
+	
+	}
+
+
+#ventana #caja-vendedor{
+	position:relative;
+	top: 5px;
+	border: 2px solid black;
+}
+#ventana #caja-nombre{
+	position:relative;
+	top: 5px;
+	border: 2px solid black;
+}
+
+#ventana #caja-telefono{
+	position:relative;
+	top: 10px;
+	left: 100px;
+	border: 2px solid black;
+}
+
+#ventana #caja-correo{
+	position:absolute;
+	top: 10px;
+	left: 100px;
+	border: 2px solid black;
+}
+#ventana #caja-edad{
+	position:absolute;
+	top: 10px;
+	left: 100px;
+	border: 2px solid black;
+}
+
+#ventana #caja-direccion{
+	position:absolute;
+	top: 10px;
+	left: 120px;
+	border: 2px solid black;
+}
+
+#ventana #caja-contrasena{
+	position:absolute;
+	top: 10px;
+	left: 120px;
+	border: 2px solid black;
+}
+
+#ventana #caja-aux{
+	position:absolute;
+	top: 10px;
+	left: 120px;
+	border: 2px solid black;
+}
+
+#ventana #caja-aux2{
+	position:absolute;
+	top: 10px;
+	left: 120px;
+	border: 2px solid black;
+}
+
+
+
+#nombre{
+	
+	position:absolute;
+	top: 140px;
+	left: 100px;
+	height: 50px;
+	width: 300px;
+
+	}
+
+#telefono{
+	
+	position:absolute;
+	top: 90px;
+	left: 430px;
+	height: 50px;
+	width: 300px;
+	}
+
+#correo{
+	
+	position:absolute;
+	top: 190px;
+	left: 430px;
+	height: 50px;
+	width: 300px;
+	}
+	
+#edad{
+	
+	position:absolute;
+	top: 140px;
+	left: 430px;
+	height: 50px;
+	width: 300px;
+	}	
+
+#direccion{
+	
+	position:absolute;
+	top: 190px;
+	left: 50px;
+	height: 50px;
+	width: 300px;
+	}
+	
+#contrasena{
+	
+	position:absolute;
+	top: 240px;
+	left: 50px;
+	height: 50px;
+	width: 300px;
+	}
+
+#aux{
+	
+	position:absolute;
+	top: 190px;
+	left: 50px;
+	height: 50px;
+	width: 300px;
+	}
+	
+#aux2{
+	
+	position:absolute;
+	top: 240px;
+	left: 50px;
+	height: 50px;
+	width: 300px;
+	}
+
+#area{
+
+	position:relative;
+	top: 500px;
+	left: 500px;
+
+}
+
+	
+#cssmenu{
+	float: left;
+	margin-top: 3px;
+	margin-left: 2px;
+	height:100%;
+	background-color: currentcolor;
+	
+	}
+	
+#cssmenu > ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+	line-height: 1;
+}
+
+/* The container */
+#cssmenu > ul {
+	display: block;
+	position: relative;
+	width: 130px;
+}
+
+	/* The list elements which contain the links */
+	#cssmenu > ul li {
+		display: block;
+		position: relative;
+		margin: 0;
+		padding: 0;
+		width: 130px;	
+	}
+
+		/* General link styling */
+		#cssmenu > ul li a {
+			/* Layout */
+			display: block;
+			position: relative;
+			margin: 0;
+			border-top: 1px dotted #3a3a3a;
+			border-bottom: 1px dotted #1b1b1b;
+			padding: 11px 20px;
+			width: 90px;
+
+			/* Typography */
+			font-family: Helvetica, Arial, sans-serif;
+			color: #d8d8d8;
+			text-decoration: none;
+			text-transform: uppercase;
+			text-shadow: 0 1px 1px #000;
+			font-size: 13px;
+			font-weight: 300;
+
+			/* Background & effects */
+			background: #282828;
+		}
+
+		/* Rounded corners for the first link of the menu/submenus */
+		#cssmenu > ul li:first-child>a {
+			border-top-left-radius: 4px;
+			border-top-right-radius: 4px;
+			border-top: 0;
+		}
+
+		/* Rounded corners for the last link of the menu/submenus */
+		#cssmenu > ul li:last-child>a {
+			border-bottom-left-radius: 4px;
+			border-bottom-right-radius: 4px;
+			border-bottom: 0;
+		}
+
+
+		/* The hover state of the menu/submenu links */
+		#cssmenu > ul li>a:hover, #cssmenu > ul li:hover>a {
+			color: #fff;
+			text-shadow: 0 1px 0 rgba(0, 0, 0, .25);
+			background: #f23f37;
+			background: -webkit-linear-gradient(bottom, #f23f37, #f45d57);
+			background: -ms-linear-gradient(bottom, #f23f37, #f45d57); 
+			background: -moz-linear-gradient(bottom, #f23f37, #f45d57);
+			background: -o-linear-gradient(bottom, #f23f37, #f45d57);
+			border-color: transparent;
+		}
+
+		/* The arrow indicating a submenu */
+		#cssmenu > ul .has-sub>a::after {
+			content: '';
+			position: absolute;
+			top: 16px;
+			right: 10px;
+			width: 0px;
+			height: 0px;
+
+			/* Creating the arrow using borders */
+			border: 4px solid transparent;
+			border-left: 4px solid #d8d8d8; 
+		}
+
+		/* The same arrow, but with a darker color, to create the shadow effect */
+		#cssmenu > ul .has-sub>a::before {
+			content: '';
+			position: absolute;
+			top: 17px;
+			right: 10px;
+			width: 0px;
+			height: 0px;
+
+			/* Creating the arrow using borders */
+			border: 4px solid transparent;
+			border-left: 4px solid #000;
+		}
+
+		/* Changing the color of the arrow on hover */
+		#cssmenu > ul li>a:hover::after, #cssmenu > ul li:hover>a::after {
+			border-left: 4px solid #fff;
+		}
+
+		#cssmenu > ul li>a:hover::before, #cssmenu > ul li:hover>a::before {
+			border-left: 4px solid rgba(0, 0, 0, .3);
+		}
+
+	
+		/* THE SUBMENUS */
+		#cssmenu > ul ul {
+			position: absolute;
+			left: 150px;
+			top: -9999px;
+			padding-left: 5px;
+			opacity: 0;
+			/* The fade effect, created using an opacity transition */
+			-webkit-transition: opacity .3s ease-in;
+			-moz-transition: opacity .3s ease-in;
+			-o-transition: opacity .3s ease-in;
+			-ms-transition: opacity .3s ease-in;
+		}
+
+		/* Showing the submenu when the user is hovering the parent link */
+		#cssmenu > ul li:hover>ul {
+			top: 0px;
+			left:100px;
+			opacity: 1;
+		}
+		
+		
+		
+		
+		
+
+		
+@import url(http://fonts.googleapis.com/css?family=Capriola);
+
+
+
+/* Menu CSS */ 
+
+
+
+#csshor, #csshor ul, #csshor ul li, #csshor ul li a{
+	
+	padding: 0;
+	margin: 0.1px;
+	line-height: 1;
+	font-family: 'Capriola', sans-serif;
+	
+}
+
+#csshor:before, #csshor:after, #csshor > ul:before, #csshor > ul:after {
+
+	content: '';
+	display: table;
+	
+}
+
+
+#csshor:after, #csshor > ul:after {
+
+	clear: both;
+	
+}
+
+#csshor {
+	zoom:1;
+	height: 69px;
+	background: url(bottom-bg.png) repeat-x center bottom;
+	border-radius: 2px;
+	
+}
+
+#csshorr {
+	zoom:1;
+	height: 69px;
+	background-color: currentcolor;
+	border-radius: 2px;
+	height: 91%;
+	margin-top: -6px;
+}
+
+#csshorr ul li{
+
+	float: left;
+	list-style: none;
+	color: white;
+	font-size: 24px;
+	margin-left: 0px;
+	margin-top: 10px;
+}
+
+#csshor ul{
+
+	background: url(nav-bg.png) repeat-x 0px 4px;
+	height: 69px;
+	
+}
+
+#csshor ul li{
+
+	float: left;
+	list-style: none;
+	
+}
+
+#csshor ul li a{
+	
+	display: block;
+	height: 37px;
+	padding: 22px 30px 0;
+	margin: 4px 2px 0;
+	border-radius: 2px 2px 0 0;
+	text-decoration: none;
+	font-size: 15px;
+	color: white;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .75);
+	font-weight: 400;
+	opacity: .9;
+	
+}
+
+#csshor ul li:first-child a{
+	
+	margin: 4px 2px 0 0;
+	
+}
+
+#csshor ul li a:hover, #csshor ul li.active a{
+	background: lightgrey center bottom;
+	display: block;
+	height: 33px;
+	margin-top: 4px;
+	padding-top: 26px;
+	color: #605000;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, .35);
+	opacity: 1;
+	
+}
+
+#num-venta{
+	
+	position:absolute;
+	top: 50px;
+	left: 50px;
+	height: 50px;
+	width: 300px;
+	
+	}
+
+
+#ventana #caja-numero{
+	position:absolute;
+	top: 10px;
+	left: 180px;
+	border: 2px solid #990000;
+}
+#ventana #caja-fecha{
+	position:absolute;
+	top: 10px;
+	left: 60px;
+	border: 2px solid #990000;
+}
+
+#ventana #caja-hora{
+	position:absolute;
+	top: 10px;
+	left: 60px;
+	border: 2px solid #990000;
+}
+
+#ventana #caja-material{
+	position:absolute;
+	top: 10px;
+	left: 190px;
+	border: 2px solid #990000;
+}
+
+#fecha{
+	
+	position:absolute;
+	top: 100px;
+	left: 50px;
+	height: 50px;
+	width: 300px;
+
+	}
+
+#hora{
+	
+	position:absolute;
+	top: 100px;
+	left: 230px;
+	height: 50px;
+	width: 300px;
+	}
+	
+#material{
+	
+	position:absolute;
+	top: 50px;
+	left: 50px;
+	height: 50px;
+	width: 300px;
+	}	
+	
+#botonAct{
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+    background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+    background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+    background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+    background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+    background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+    
+    background-color:#ffffff;
+    
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    
+    border:1px solid #dcdcdc;
+    
+    display:inline-block;
+    color:#666666;
+    font-family:arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 10px;
+    text-decoration:none;
+    
+    text-shadow:0px 1px 0px #ffffff;
+    
+}
+
+#botonBuscar {
+        
+		position:absolute;
+		top: 50px;
+		left: 430px;
+        -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+        -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+        box-shadow:inset 0px 1px 0px 0px #ffffff;
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+        background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+        background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+        background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+        background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+        background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+        
+        background-color:#ffffff;
+        
+        -moz-border-radius:6px;
+        -webkit-border-radius:6px;
+        border-radius:6px;
+        
+        border:1px solid #dcdcdc;
+        
+        display:inline-block;
+        color:#666666;
+        font-family:arial;
+        font-size:15px;
+        font-weight:bold;
+        padding:6px 24px;
+        text-decoration:none;
+        
+        text-shadow:0px 1px 0px #ffffff;
+        
+    }
+
+    #myButton {
+        
+		position:absolute;
+		top: 100px;
+		left: 430px;
+        -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+        -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+        box-shadow:inset 0px 1px 0px 0px #ffffff;
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+        background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+        background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+        background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+        background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+        background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+        
+        background-color:#ffffff;
+        
+        -moz-border-radius:6px;
+        -webkit-border-radius:6px;
+        border-radius:6px;
+        
+        border:1px solid #dcdcdc;
+        
+        display:inline-block;
+        color:#666666;
+        font-family:arial;
+        font-size:15px;
+        font-weight:bold;
+        padding:6px 24px;
+        text-decoration:none;
+        
+        text-shadow:0px 1px 0px #ffffff;
+        
+    }
+    #myButton:hover {
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
+        background:-moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+        background:-webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+        background:-o-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+        background:-ms-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+        background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
+        
+        background-color:#f6f6f6;
+    }
+    #myButton:active {
+        position:absolute;
+        top:101px;
+    }
+
+
+
+    #Boton {
+        position:absolute;
+		top: 550px;
+		left: 350px;
+        -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+        -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+        box-shadow:inset 0px 1px 0px 0px #ffffff;
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+        background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+        background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+        background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+        background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+        background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+        
+        background-color:#ffffff;
+        
+        -moz-border-radius:6px;
+        -webkit-border-radius:6px;
+        border-radius:6px;
+        
+        border:1px solid #dcdcdc;
+        
+        display:inline-block;
+        color:#666666;
+        font-family:arial;
+        font-size:15px;
+        font-weight:bold;
+        padding:6px 24px;
+        text-decoration:none;
+        
+        text-shadow:0px 1px 0px #ffffff;
+        
+    }
+    #Boton:hover {
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
+        background:-moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+        background:-webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+        background:-o-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+        background:-ms-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+        background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
+        
+        background-color:#f6f6f6;
+    }
+    #Boton:active {
+        position:absolute;
+        top:301px;
+    }
+
+#tabla{
+	color: black;
+	float: left;
+	height: 300px;
+	overflow: scroll;
+	overflow-x: hidden;
+	position:relative;
+	top: 100px;	
+	margin left: 50px;
+	width: 700px;
+	}
+
+
+	
+
+.aa:hover{
+	background-color: white;}
+	
+	
+/* 
+	Cusco Sky table styles
+	written by Braulio Soncco http://www.buayacorp.com
+*/
+
+table, th, td {
+	border: 0px;
+	border-collapse: collapse;
+	font-family: "Trebuchet MS", Arial, sans-serif;
+	color: #555;
+	text-align: "center";
+}
+
+caption {
+	font-size: 150%;
+	font-weight: bold;
+	margin: 5px;
+}
+
+td, th {
+	padding: 4px;
+}
+
+thead th {
+	text-align: center;
+	background: #E6EDF5;
+	color: #4F76A3;
+	font-size: 100% !important;
+}
+
+tbody th {
+	font-weight: bold;
+}
+
+tbody tr { background: #FCFDFE; }
+
+tbody tr.odd { background: #F7F9FC; }
+
+table a:link {
+	color: #718ABE;
+	text-decoration: none;
+}
+
+table a:visited {
+	color: #718ABE;
+	text-decoration: none;
+}
+
+table a:hover {
+	color: #718ABE;
+	text-decoration: underline !important;
+}
+
+tfoot th, tfoot td {
+	font-size: 85%;
+}

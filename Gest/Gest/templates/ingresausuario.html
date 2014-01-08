@@ -1,0 +1,123 @@
+{% extends 'template.html' %}
+{% block TITLE %}Mi primera pagina con estilo{% endblock %}
+
+
+{% block HEADER %}
+	<div id="contenido">
+		<div id='csshor'>
+		<ul>
+			<li class='active '><a href="{% url ingresausuario %}"><span>Crear</span></a></li>
+			<li><a href="{% url modificausuario %}"><span>Modificar</span></a></li>
+			<li><a href="eliminausuario"><span>Eliminar</span></a></li>
+		</ul>
+		</div>
+	</div>	
+{% endblock %}
+
+{% block MENU %}
+	<ul>
+		<li class='has-sub '><a href='informes'><span>Informes</span></a>
+			<ul>
+				<li><a href='construccion'><span>Ventas</span></a></li>
+				<li><a href='construccion'><span>Stock</span></a></li>	
+			</ul>
+		</li>
+		<li class='has-sub '><a href='{% url verclientes %}'><span>Clientes</span></a>
+		</li>
+		<li class='has-sub '><a href='{% url vehiculo_list %}'><span>Vehículos</span></a>
+		</li>
+		<li class='has-sub '><a href='{% url ingresausuario %}'><span>Usuarios</span></a>
+			<ul>
+				<li><a href='{% url ingresausuario %}'><span>Crear</span></a></li>
+				<li><a href='{% url modificausuario %}'><span>Modificar</span></a></li>	
+				<li><a href='eliminausuario'><span>Eliminar</span></a></li>	
+			</ul>
+		</li>
+	</ul>
+{% endblock %}
+
+{% block CONTENT %}
+	<h2> Ingresar nuevo usuario</h2><br><br><br><br> 
+		<form method="post" action="{% url ingresausuario %}">
+	        {% csrf_token %}
+ 
+			<table>
+				<tr>
+				<td><p>Nombre de Usuario:</p></td>
+				<td>{{ form.username }}</td>
+				<td width="40px"></td>
+				<td><p>Contraseña:</p></td>
+				<td> {{ form.password }} </td>
+				<tr>
+				<td><p>Correo:</p></td>
+				<td> {{ form.email }} </td>
+				<td width="40px"></td>
+				<td>Rut usuario:</td>
+                <td>{{ formu.rutEmpleado }}</td>
+                <tr>
+				<td><p>Nombre:</p></td>
+				<td> {{ form.first_name }} </td>
+				<td width="40px"></td>
+				<td>Apellido:</td>
+                <td>{{ form.last_name }}</td>
+                <tr>
+				<td><p>Telefono:</p></td>
+				<td> {{ formu.telefonoEmpleado }} </td>
+				<td width="40px"></td>
+				<td>Cargo:</td>
+                <td> <select name="cargo">
+                       <option value="0" selected> Cargo </option>
+                       <option value="1"> Jefe de Servicio </option>
+                       <option value="2"> Jefe de Taller </option>
+                       <option value="3"> Jefe de Bodega </option>
+                       <option value="4"> Mecanico </option>
+                       <option value="5"> Administrador </option>
+                       <option value="6"> Auditor </option>
+                    </select></td>
+			</table>
+			<br>
+			<button type="submit" class="btn btn-default">Guardar</button>
+		</form>
+
+{% endblock %}
+
+{% block errores %}
+    
+	{% if form.password.errors %}
+        Debe indicar una contraseña.<br>
+    {% endif %}    
+
+	{% if form.username.errors %}
+        El nombre de usuario es inválido o ya existe.<br>
+    {% endif %}    
+
+	{% if form.email.errors %}
+        Ingrese una dirección de correo válida.<br>
+    {% endif %}    
+
+    {% if rutInvalido %}
+        Rut inválido.<br>
+    {% endif %}
+    
+    {% if correoRegistrado %}
+        El correo indicado ya tiene una cuenta asociada.<br>
+    {% endif %}
+
+    {% if correoVacio %}
+        Ingrese una direccion de correo electrónico.<br>
+    {% endif %}
+
+    {% if camposVacios %}
+        Debe especificar un nombre y un apellido.<br>
+    {% endif %}
+
+    {% if telefonoInvalido %}
+        El teléfono ingresado es inválido.<br>
+    {% endif %}
+
+    {% if cargoInvalido %}
+        Por favor elija un cargo.<br>
+    {% endif %}
+
+{% endblock %}
+	</div>

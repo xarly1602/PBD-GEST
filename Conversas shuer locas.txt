@@ -1,0 +1,61 @@
+JRE
+jdk
+domain1
+4848
+
+FINGESO: diferencias polimorfismo y sobrecarga de metodos
+
+Integridad.
+DEF: la integridad de un objeto es una propiedad de este que permite al objeto protegerse de eventuales operaciones no deseadas.
+hay tres tipos: Identificacion, dominio y referencias (restrictas, cascada, anulable).
+
+Triggers.
+DEF: un trigger es un proceso asociado a una tabla y una operacion tal que al efectuar una operacion sobre la tabla se gatilla la ejecucion del trigger. Ejemplo: Rebajar stock en el momento de cada venta.
+
+Jefe de carrera - coord docente - subdirector ---> Hacen lo mismo
+privilegios van aumentando todo lo que hace la secre lo hacen los administrativos superiores mas otras cosas.
+
+RNF: 	Correr en cualquier navegador NOOOOO!!! Navegadores especificos y versiones especificas.
+	Sistema de autentificacion con usuario y contraseña es requisito funcional. Si necesita conectarse con otro sistema para autentificar seria NF.
+	Como determinar el nombre de usuario y contraseña es NF.
+
+CU:	Precondiciones, Estado previo del sistema antes de una intervencion: El sistema presenta el usuario registrado.
+	Podrá --> Selecciona la operacion ... y ahi puede ...
+	Al seleccionar la opcion agregar... --> Secretaria selecciona agregar...
+	pinponeo --> Usuario realiza algo, el sistema responde.
+	Excepciones ---> que hacer con esa excepcion, no que se le muestra al usuario cuando ocurre.
+
+MClases:Mostrar las relaciones y atributos.
+
+DSec:	Titulo, Precondiciones,
+	Diagramar las clases, secuencia entre ellas. Aplicacion no va.
+	Transiciones bien especificadas.
+
+
+
+TIERS: Cadenas de proceso entre componentes.
+LAYERS: Relaciones contenedor/componente en la implementacion y despliegue de servicios.
+SYSTEMIC QUALITIES: Estrategias, herramientas y practicas que se necesitan para entregar la calidad requerida del servicio.
+
+
+
+
+Triggers
+Descontar Stock cuando se genera una venta
+Registrar datos de auditoria
+Cambiar estado de vehículos al cambiar estado de clientes
+
+Proc almacenados
+Obtención de datos para los Informes
+Borrar datos de auditoria periódicamente.
+
+Indices
+Materiales por código material
+Clientes por rut
+Vehículos por patente
+OT por numero de folio
+Ventas por numero de folio
+Modelos por id
+
+Views
+OT-Cliente-servicios-venta-vehiculo

@@ -1,0 +1,102 @@
+{% extends 'template.html' %}
+		{% block TITLE %}Mi primera pagina con estilo{% endblock %}
+
+{% block HEADER %}
+	
+
+	<div id="contenido">
+		<div id='csshorr'>
+		<ul>
+			<li class='active '><span> <br>Bienvenido</span></li>
+		</ul>
+		</div>
+	</div>	
+{% endblock %}
+{% block MENU %}
+	<ul>
+		<li class='has-sub '><a href='{% url buscaotMecanico %}'><span>Orden de Trabajo</span></a>
+			<ul>
+				<li><a href='{% url buscaotMecanico %}'><span>Modificar</span></a></li>
+			</ul>
+		</li>
+	</ul>
+{% endblock %}
+		{% block CONTENT %}
+			
+			<h2 style = "margin-top: 20px"> Modificar OT</h2>	
+
+			{% if not OT %}
+
+			{% if not otEncontrada %}
+			<script type="text/javascript">
+				alert("La OT indicada no existe.")
+			</script>
+			{% endif %}
+
+			<form method="post" action="{% url buscaotMecanico %}">
+        		{% csrf_token %}
+				<div id="material">
+						<p></p>
+					<input name="numeroBuscado" style = "top: 50px" type="text" size="15" maxlength="30" id="caja-material" placeholder= "Numero orden">
+					</input>
+				</div><br><br><br><br><br>
+				<button name="buscarOT" type="submit" class="btn btn-default">Buscar</button>
+			</form>
+			{% endif %}
+
+			{%if OT %}
+			<form method="post" action="{% url buscaotMecanico %}">
+		        {% csrf_token %}
+				<input type="hidden" name="numeroOrden" value = "{{ otBuscada.numeroOrden }}">
+				<br><br><br><br>
+				<table>
+					<tr>
+					<td><p>Numero de Orden:</p></td>
+					<td><input disabled type="text" value="{{ otBuscada.numeroOrden }}"></input> </td>
+					<td width="40px"></td>
+					<td><p>Fecha de Inicio:</p></td>
+					<td> <input disabled type="text" value="{{otBuscada.fechaInicio}}"></input> </td>
+					{% for D in detalleOT %}
+					<tr>
+					<td><p>Servicio:</p></td>
+					<td><input disabled type="text" value="{{ D.sevicioID }}"></input> </td>
+					<td width="20px"></td>
+					<td><p>Subtotal:</p></td>
+					<td> <input disabled type="text" value="{{D.sevicioID.precioServicio}}"></input> </td>	
+					{% endfor %}
+					<tr>
+					<td>Estado: </td>
+					<td>
+						<select name="EstadoOT">
+							{% if otBuscada.estadoID.id == 1 %}
+							<option value = "1" selected>Espera a Ejecucion</option>
+							{% else %}
+							<option value = "1">Espera a Ejecucion</option>
+							{% endif %}
+							{% if otBuscada.estadoID.id == 2 %}
+							<option value = "2" selected>Ejecucion</option>
+							{% else %}
+							<option value = "2">Ejecucion</option>
+							{% endif %}
+							{% if otBuscada.estadoID.id == 3 %}
+							<option value = "3" selected>Espera a Pago</option>
+							{% else %}
+							<option value = "3">Espera a Pago</option>
+							{% endif %}
+							{% if otBuscada.estadoID.id == 4 %}
+							<option value = "4" selected>Finalizada</option>
+							{% else %}
+							<option value = "4">Finalizada</option>
+							{% endif %}
+						</select>
+					</td>
+					<td width="40px"></td>
+					<td><p>total:</p></td>
+					<td> <input name="total" disabled type="text" value="{{total}}"></input> </td>
+					
+				</table>
+				<br>
+				<button name='finalizarOT' type="submit" class="btn btn-default">Guardar</button>
+			</form>
+			{% endif %}
+			{% endblock %}

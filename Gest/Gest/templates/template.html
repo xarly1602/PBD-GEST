@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  	<title>{% block TITLE %}{% endblock %}</title>
+  	<link rel="stylesheet" href="static/ventas.css">
+  	<link rel="stylesheet" href="static/css/bootstrap.css">
+	{% block Imagen %}{% endblock %}
+
+
+</head>
+<body>
+<div id="hd">
+	<div id ="imagen">
+			<img  src="static/gest.jpg">	
+	</div>
+	<div id="titulo">
+		<h2 id="nombre-sitio">
+			Plataforma de administracion GEST
+			</h2>
+		<div id="logout">
+			<a href="{% url logout %}" class='botonrss'>Cerrar Sesión</a>
+		</div>
+	</div>
+{% block HEADER %} {% endblock %}
+
+</div>
+
+<div id="cuerpo">
+	
+	
+	<div id='cssmenu'>
+		{% block MENU %}{% endblock %}
+	</div>
+	
+	
+		<div id="ventana" align="center">
+			{% block CONTENT %}{% endblock %}
+			{% block errores %}{% endblock %}
+		</div>
+	</div>
+	
+</div>
+
+
+
+
+</body>
+</html>

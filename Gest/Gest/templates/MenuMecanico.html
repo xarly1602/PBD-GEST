@@ -1,0 +1,64 @@
+{% extends 'template.html' %}
+
+
+{% block TITLE %}Mi primera pagina con estilo{% endblock %}
+
+
+{% block HEADER %}
+	
+
+	<div id="contenido">
+		<div id='csshorr'>
+		<ul>
+			<li class='active '><span> <br>Bienvenido</span></li>
+		</ul>
+		</div>
+	</div>	
+{% endblock %}
+{% block MENU %}
+	<ul>
+		<li class='has-sub '><a href='{% url buscaotMecanico %}'><span>Orden de Trabajo</span></a>
+			<ul>
+				<li><a href='{% url buscaotMecanico %}'><span>Modificar</span></a></li>
+			</ul>
+		</li>
+	</ul>
+{% endblock %}
+
+{% block CONTENT %}
+	
+
+{% endblock %}
+
+{% block errores %}
+    
+	{% if form.password.errors %}
+        Debe indicar una contraseña.<br>
+    {% endif %}    
+
+	{% if form.username.errors %}
+        El nombre de usuario es inválido o ya existe.<br>
+    {% endif %}    
+
+	{% if form.email.errors %}
+        Ingrese una dirección de correo válida.<br>
+    {% endif %}    
+
+    {% if rutInvalido %}
+        Rut inválido.<br>
+    {% endif %}
+    
+    {% if correoRegistrado %}
+        El correo indicado ya tiene una cuenta asociada.<br>
+    {% endif %}
+
+    {% if telefonoInvalido %}
+        El teléfono ingresado es inválido.<br>
+    {% endif %}
+
+    {% if cargoInvalido %}
+        Por favor elija un cargo.<br>
+    {% endif %}
+
+{% endblock %}
+	</div>
